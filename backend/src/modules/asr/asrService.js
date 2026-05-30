@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { ghanaNLPApiKey } = require('../../config');
+const { geminiApiKey } = require('../../config');
 
 const MODELS = {
   tw: 'tw',
@@ -11,24 +11,41 @@ const transcribeAudio = async (audioBuffer, lang) => {
     throw new Error(`No ASR model available for language: ${lang}`);
   }
 
+  const base64Audio = audioBuffer.toString('base64');
+
   const response = await axios.post(
-    `https://translation-api.ghananlp.org/asr/v2/transcribe?language=${MODELS[lang]}`,
-    audioBuffer,
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiApiKey}`,
     {
-      headers: {
-        'Content-Type': 'audio/mpeg',
-        'Cache-Control': 'no-cache',
-        'Ocp-Apim-Subscription-Key': ghanaNLPApiKey,
-      },
+      contents: [
+        {
+          parts: [
+            {
+              inline_data: {
+                mime_type: 'audio/wav',
+                data: base64Audio,
+              },
+            },
+            {
+              text: lang === 'tw'
+                ? 'Transcribe this Twi (Akan) audio exactly as spoken. Return only the transcribed text, nothing else.'
+                : 'Transcribe this English audio exactly as spoken. Return only the transcribed text, nothing else.',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      headers: { 'Content-Type': 'application/json' },
     }
   );
 
-  console.log('[ASR] Response:', response.data);
+  const text = response.data.candidates[0].content.parts[0].text.trim();
+  console.log('[ASR] Transcribed:', text);
 
   return {
-    text: response.data.text || response.data,
+    text,
     lang,
-    model: MODELS[lang],
+    model: 'gemini-2.0-flash',
   };
 };
 

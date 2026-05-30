@@ -16,6 +16,7 @@ router.post('/', async (req, res) => {
     res.set('Content-Type', 'audio/wav');
     res.send(audioData);
   } catch (error) {
+    console.error('[TTS Error]', error.response?.data || error.message);
     res.status(500).json({ error: error.message });
   }
 });
