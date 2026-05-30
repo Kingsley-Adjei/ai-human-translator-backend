@@ -1,0 +1,16 @@
+.wave {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 20px;
+}
+
+.bar {
+  width: 3px;
+  height: 100%;
+  border-radius: 3px;
+  transform-origin: center;
+}
+
+.teal { background: var(--accent-teal); }
+.gold { background: var(--accent-gold); }

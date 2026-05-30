@@ -1,0 +1,121 @@
+/* ============================================
+   LinguaBridge — Global Styles & Design Tokens
+   ============================================ */
+
+:root {
+  /* Surfaces */
+  --bg-base: #060a0d;
+  --bg-deep: #03060a;
+  --bg-surface: #0c1419;
+  --bg-surface-2: #111c22;
+  --bg-elevated: #16242b;
+  --bg-card: rgba(18, 30, 36, 0.6);
+
+  /* Brand — teal/emerald to gold */
+  --accent-teal: #2ee6c5;
+  --accent-teal-soft: #1fb89c;
+  --accent-emerald: #19c79f;
+  --accent-gold: #f5c542;
+  --accent-gold-soft: #e0a92e;
+
+  /* Gradient used on CTAs and headings */
+  --grad-brand: linear-gradient(95deg, #2ee6c5 0%, #4fd6a8 38%, #f5c542 100%);
+  --grad-heading: linear-gradient(180deg, #4fe9cd 0%, #19c79f 100%);
+  --grad-cta: linear-gradient(90deg, #1fb89c 0%, #5bcf8f 50%, #f5c542 100%);
+
+  /* Text */
+  --text-primary: #eaf3f1;
+  --text-secondary: #9fb3b0;
+  --text-muted: #6a807d;
+  --text-faint: #475a57;
+
+  /* Borders */
+  --border-subtle: rgba(46, 230, 197, 0.10);
+  --border-soft: rgba(120, 150, 145, 0.14);
+  --border-glow: rgba(46, 230, 197, 0.35);
+
+  /* Status colors per-language tag */
+  --tag-teal: #2ee6c5;
+  --tag-gold: #f5c542;
+
+  /* Layout */
+  --maxw: 1180px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 26px;
+
+  /* Type */
+  --font-sans: var(--font-sora), system-ui, sans-serif;
+  --font-mono: var(--font-mono-space), 'Courier New', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+::selection {
+  background: rgba(46, 230, 197, 0.25);
+  color: #fff;
+}
+
+/* Shared utility wrappers */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  position: relative;
+  padding: 96px 0;
+}
+
+.gradient-text {
+  background: var(--grad-heading);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb {
+  background: rgba(46, 230, 197, 0.2);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(46, 230, 197, 0.35); }
+
+@media (max-width: 768px) {
+  .section { padding: 64px 0; }
+  .container { padding: 0 18px; }
+}

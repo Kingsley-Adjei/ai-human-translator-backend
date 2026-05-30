@@ -1,0 +1,37 @@
+.footer {
+  border-top: 1px solid var(--border-subtle);
+  padding: 56px 0 48px;
+  background: var(--bg-deep);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.brand { font-size: 22px; font-weight: 700; }
+
+.copy {
+  font-size: 13px;
+  color: var(--text-muted);
+  max-width: 320px;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 26px;
+  margin-top: 8px;
+}
+
+.link {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+.link:hover { color: var(--accent-teal); }

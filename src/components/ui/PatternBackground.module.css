@@ -1,0 +1,34 @@
+.wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.svg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  animation: drift 60s linear infinite;
+}
+
+.glow {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 60%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(46, 230, 197, 0.10) 0%,
+    transparent 60%
+  );
+  filter: blur(40px);
+}
+
+@keyframes drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-46px); }
+}
